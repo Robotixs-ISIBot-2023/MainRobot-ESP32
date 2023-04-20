@@ -23,13 +23,6 @@ bool flagFinishOnce1 = false;
 #define NUMPIXELS 24
 int pix;
 Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
-int red = 0;                                                      // Valeur de la couleur rouge du ruban led
-int green = 0;                                                    // Valeur de la couleur verte du ruban led
-int blue = 0;                                                     // Valeur de la couleur bleue du ruban led
-
-int i;
-int j;
-int k;
 
 const char* mqtt_server = "172.30.40.38"; 
 
