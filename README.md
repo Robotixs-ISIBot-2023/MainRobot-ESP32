@@ -9,7 +9,7 @@ The ESP32 code contains:
 * Display points on the oled (subscribe MQTT)
 * Buzzer that plays "Happy Birthday" (subscribe MQTT)
 
-# [EN] MainBot (ESP32)
+# [FR] MainBot (ESP32)
 Code de l'ESP32 du bot principal pour la compétition.
 
 ## Informations
