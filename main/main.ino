@@ -25,7 +25,7 @@ bool flagFinishOnce1 = false;
 int pix;
 Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
 
-const char* mqtt_server = "172.30.40.38"; 
+const char* mqtt_server = "192.168.0.101"; 
 
 WiFiClient espClient;                                                           // Création de "espClient" propre au client Wi-Fi
 PubSubClient client(espClient);
