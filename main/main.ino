@@ -175,13 +175,11 @@ void setup() {
   display.clearDisplay();                                                       // Clear the buffer.
   // OLED SSD1306 => WHITE
   // OLED SH110X => SH110X_WHITE
-  display.drawRoundRect(0, 0, 90, 30, 3, SH110X_WHITE); //x1, y1, largeur, hauteur, rayon
-  display.drawRoundRect(94, 0, 33, 64, 3, SH110X_WHITE); //x1, y1, largeur, hauteur, rayon
-  display.drawRoundRect(0, 34, 90, 30, 3, SH110X_WHITE); //x1, y1, largeur, hauteur, rayon
-  display.setTextSize(1);  
+  display.drawRoundRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 3, SH110X_WHITE); //x1, y1, largeur, hauteur, rayon
+  display.setTextSize(2);  
   display.setTextColor(SH110X_WHITE, SH110X_BLACK);  
   printToOLED(5, 5, "Points :");
-  printToOLED(5, 17,"0");
+  //printToOLED(30, 17,"0");
 
   //BUZZER
   pinMode(PinBuzzer, OUTPUT);
@@ -210,7 +208,7 @@ void Task1code( void * parameter ){
       flagFinishOnce1 = true;
       // Joue MUSIQUE
       Serial.println("Go musique");
-      playMusic()
+      playMusic();
     }
   } 
 }
@@ -224,7 +222,7 @@ void Task2code( void * parameter ){
     vTaskDelay( xDelayTask2 );
 
     sprintf(charPoints, "%5u", points);
-    printToOLED(5, 17, charPoints);  
+    printToOLED(17, 35, charPoints);  
 
     //BUZZER
     if(finish) {
