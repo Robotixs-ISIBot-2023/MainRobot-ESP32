@@ -12,8 +12,8 @@
 TaskHandle_t Task1;
 TaskHandle_t Task2;
 
-const char* ssid = "LARAS";                                                     // SSID du réseau Wi-Fi auquel il faut se connecter
-const char* password = "wifi4guest";                                            // Mot de passe du réseau Wi-Fi auquel il faut se connecter
+const char* ssid = "ISIBot";                                                     // SSID du réseau Wi-Fi auquel il faut se connecter
+const char* password = "Robotix-ISIBot";                                            // Mot de passe du réseau Wi-Fi auquel il faut se connecter
 
 int points = 0;
 char charPoints[5];
