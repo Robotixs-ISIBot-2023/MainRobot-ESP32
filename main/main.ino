@@ -6,8 +6,7 @@
 #include <WiFi.h>                                                               // Librairie Wi-Fi
 #include <PubSubClient.h>  
 #include <Adafruit_NeoPixel.h>
-#include "pitches.h"  //add note library
-#include <Tone32.h>  //add note library
+#include <Tone32.h>  // add note library
 
 TaskHandle_t Task1;
 TaskHandle_t Task2;
@@ -125,6 +124,21 @@ void printToOLED(int x, int y,  char *message){
   display.display();
 }
 
+void playMusic(){
+  //play the notes of the melody. The 28 reresent the number of notes played in the song.
+  for (int thisNote=0; thisNote <28; thisNote++){
+
+    //to calculate the note duration, take one second. Divided by the note type
+    int noteDuration = 1000 / noteDurations [thisNote];
+    tone(PinBuzzer, melody [thisNote], noteDuration, 0);
+    noTone(PinBuzzer, 0);
+
+    //to set the speed of the song set a minimum time between notes
+    int pauseBetweenNotes = int(noteDuration / 4);
+    delay(pauseBetweenNotes);      
+  }
+}
+
 void setup() {
   Serial.begin(115200); 
 
@@ -196,17 +210,7 @@ void Task1code( void * parameter ){
       flagFinishOnce1 = true;
       // Joue MUSIQUE
       Serial.println("Go musique");
-      //play the notes of the melody. The 28 reresent the number of notes played in the song.
-      for (int thisNote=0; thisNote <28; thisNote++){
-
-        //to calculate the note duration, take one second. Divided by the note type
-        int noteDuration = 1000 / noteDurations [thisNote];
-        tone(PinBuzzer, melody [thisNote], noteDuration);
-
-        //to set the speed of the song set a minimum time between notes
-        int pauseBetweenNotes = noteDuration * 1.30;
-        delay(pauseBetweenNotes);      
-      }
+      playMusic()
     }
   } 
 }
