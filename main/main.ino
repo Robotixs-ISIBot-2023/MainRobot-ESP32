@@ -7,6 +7,7 @@
 #include <PubSubClient.h>  
 #include <Adafruit_NeoPixel.h>
 #include "pitches.h"  //add note library
+#include <Tone32.h>  //add note library
 
 TaskHandle_t Task1;
 TaskHandle_t Task2;
