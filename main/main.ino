@@ -229,9 +229,6 @@ void Task2code( void * parameter ){
       // Affiche LED
       Serial.println("Go LED");
       pix ++;
-      Serial.print(pix);
-      Serial.print(" - ");
-      Serial.println(pix%3);
       if (pix%3 == 0){ 
         for (int i = 0; i < NUMPIXELS; i++){
           pixels.setPixelColor(i, 255, 25, 35);
