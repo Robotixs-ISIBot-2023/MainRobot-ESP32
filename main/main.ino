@@ -210,6 +210,10 @@ void Task1code( void * parameter ){
       Serial.println("Go musique");
       playMusic();
     }
+
+    sprintf(charPoints, "%5u", points);
+    printToOLED(17, 35, charPoints);  
+
   } 
 }
 
@@ -220,9 +224,6 @@ void Task2code( void * parameter ){
   for(;;){ 
 
     vTaskDelay( xDelayTask2 );
-
-    sprintf(charPoints, "%5u", points);
-    printToOLED(17, 35, charPoints);  
 
     //BUZZER
     if(finish) {
