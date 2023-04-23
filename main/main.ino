@@ -20,7 +20,7 @@ bool finish = false;
 bool flagFinishOnce1 = false;
 
 #define PIN 19
-#define NUMPIXELS 24
+#define NUMPIXELS 117
 int pix;
 Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
 
