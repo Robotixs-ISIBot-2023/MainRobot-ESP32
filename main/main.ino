@@ -245,7 +245,7 @@ void setup() {
   // OLED SSD1306 => WHITE
   // OLED SH110X => SH110X_WHITE
   
-  display.drawBitmap(0, 0, logo, logo_width, logo_height, SH110X_WHITE);        // Draw our own logo :P
+  display.drawBitmap(0, 0, logo, 128, 64, SH110X_WHITE);        // Draw our own logo :P
   display.display();
   delay(5000);
   display.clearDisplay();
@@ -269,7 +269,7 @@ void setup() {
 void Task1code( void * parameter ){
   Serial.print("Task1 is running on core ");
   Serial.println(xPortGetCoreID());
-  const TickType_t xDelayTask1 = 1 / portTICK_PERIOD_MS ;
+  const TickType_t xDelayTask1 = 500 / portTICK_PERIOD_MS ;
   for(;;){
     if (!client.connected()) {                                                    // Si le client pour le MQTT en WiFi n'est pas connecté
       reconnect();                                                                // On appelle la fonction qui demande une reconnexion
@@ -277,28 +277,6 @@ void Task1code( void * parameter ){
     client.loop();
     
     vTaskDelay( xDelayTask1 );
-
-    //BUZZER
-    if(finish && !flagFinishOnce1) {
-      flagFinishOnce1 = true;
-      // Joue MUSIQUE
-      Serial.println("Go musique");
-      playMusic();
-    }
-
-    sprintf(charPoints, "%5u", points);
-    printToOLED(17, 35, charPoints);  
-
-  } 
-}
-
-void Task2code( void * parameter ){
-  Serial.print("Task2 is running on core ");
-  Serial.println(xPortGetCoreID());
-  const TickType_t xDelayTask2 = 500 / portTICK_PERIOD_MS ;
-  for(;;){ 
-
-    vTaskDelay( xDelayTask2 );
 
     //BUZZER
     if(finish) {
@@ -321,6 +299,28 @@ void Task2code( void * parameter ){
         }
       }
       pixels.show(); // Send the updated pixel colors to the hardware.  
+    }
+
+  } 
+}
+
+void Task2code( void * parameter ){
+  Serial.print("Task2 is running on core ");
+  Serial.println(xPortGetCoreID());
+  const TickType_t xDelayTask2 = 2 / portTICK_PERIOD_MS ;
+  for(;;){ 
+
+    vTaskDelay( xDelayTask2 );
+
+    sprintf(charPoints, "%5u", points);
+    printToOLED(17, 35, charPoints);
+
+    //BUZZER
+    if(finish && !flagFinishOnce1) {
+      flagFinishOnce1 = true;
+      // Joue MUSIQUE
+      Serial.println("Go musique");
+      playMusic();
     }
   }
 }
